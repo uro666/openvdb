@@ -1,0 +1,4 @@
+# package has its own documentation
+addFilter("W: no-manual-page-for-binary")
+# package docs are pregenerated which rpm copies into %files, we cannot dedup that easily
+addFilter("W: files-duplicate")
