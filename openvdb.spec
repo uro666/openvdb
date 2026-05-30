@@ -165,7 +165,7 @@ Python module providing OpenVDB C++ Python bindings.
 
 
 %build -p
-%limit_build -m 4096
+%limit_build -m 3072
 export CXXFLAGS="%{optflags} -Wl,--as-needed"
 
 %install -a
@@ -179,10 +179,10 @@ find %{buildroot} -name '*.a' -delete
 
 %if %{with tests}
 %check
+%limit_build -m 3072
 export PYTHONPATH="%{buildroot}%{python_sitearch}"
 export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
-
-ctest -v --test-dir=_OMV_rpm_build
+ctest --verbose --test-dir=_OMV_rpm_build
 %endif
 
 %files
